@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts By Category</title>
+</head>
+<body>
+<h3 style="color: blue"><a href="/">Back</a> </h3>
+
+<div style="width: 1200px" th:each="post : ${posts}">
+
+    <!--<a href="/"><span th:text="${post.getTitle()}"></span> </a>-->
+    <h3  th:text="${post.getTitle()}"></h3>
+    <a th:href="@{/post/getPostById(id=${post.id})}"><img width="150px" th:src="@{/post/getImage(picUrl=${post.getPicUrl()})}" ></a>
+    <p th:text="${post.getShortText()}"></p>
+    <hr>
+</div>
+</body>
+</html>

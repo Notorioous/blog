@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Detail</title>
+</head>
+<body>
+<h3 style="color: blue"><a href="/">Back</a> </h3>
+
+<div style="margin: auto">
+
+    <h1 th:text="${post.getTitle()}"></h1><br>
+    <a th:href="@{/post/delete(id=${post.id})}"><b>Delete Post</b></a><br><br>
+    <img width="500px" th:src="@{/post/getImage(picUrl=${post.getPicUrl()})}"><br><br>
+    <h3 th:text="${post.getShortText()}"></h3><br>
+    <p th:text="${post.getText()}"></p><br>
+    <hr><br>
+    <div th:each="cat : ${post.getCategories()}" >
+   <a th:href="@{/post/getPostByCategory(id=${cat.id})}"> <span th:text="${cat.getName()} "></span><br> </a>
+    </div>
+    <hr>
+    <span th:text="${post.getCreatedDate()}"></span>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+</head>
+<body>
+
+<h3 style="color: blue"><a href="/">Back</a> </h3>
+
+<h3 style="color: red">Add Posts :</h3><br>
+
+<div>
+
+<form action="/post/add" method="post" enctype="multipart/form-data">
+
+    <input type="text" name="title" placeholder="title"><br>
+    <textarea name="shortText" placeholder="short text"></textarea><br>
+    <textarea name="text" placeholder="full text"></textarea><br>
+    <input th:each="category : ${categories}" th:text="${category.getName()}" type="checkbox" name="categories" th:value="${category.id}" > <br><br>
+    <input type="file" name="picture"><br><br>
+    <input type="submit" value="Add">
+
+
+
+</form><br>
+
+</div>
+
+<h3 style="color: orange;">Add Category :</h3>
+
+<div>
+<form action="/category/add" method="post">
+
+    <input type="text" name="name" placeholder="Category Name">
+    <input type="submit" value="Add">
+
+</form>
+
+</div>
+
+</body>
+</html>
