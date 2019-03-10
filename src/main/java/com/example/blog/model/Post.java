@@ -29,7 +29,7 @@ public class Post {
     private String text;
     @Column(name = "created_date")
     private Date createdDate;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "post_categories",
             joinColumns = @JoinColumn(name = "post_id"),

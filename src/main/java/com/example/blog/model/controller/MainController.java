@@ -31,7 +31,7 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/add")
+    @GetMapping(  "/add")
     public String add(ModelMap map){
 
         List<Category> categories = categoryRepository.findAll();

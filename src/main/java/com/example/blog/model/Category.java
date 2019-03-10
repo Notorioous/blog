@@ -22,7 +22,7 @@ public class Category {
     private int id;
     @Column
     private String name;
-    @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "categories", cascade = CascadeType.PERSIST)
     private List<Post> posts;
 
 

@@ -69,24 +69,26 @@ public class PostController {
     @GetMapping("/getPostByCategory")
     public String getPostByCatId(@RequestParam("id") int id, ModelMap map){
 
-        Category category = categoryRepository.getOne(id);
-        List<Post> posts = postRepository.findAll();
-        List<Post> getPosts = new ArrayList<>();
-        for (Post post: posts) {
-            for(Category cat : post.getCategories()){
-                if(cat == category){
-                    getPosts.add(post);
-                }
-            }
-        }
+//        Category category = categoryRepository.getOne(id);
+//        List<Post> posts = postRepository.findAll();
+//        List<Post> getPosts = new ArrayList<>();
+//        for (Post post: posts) {
+//            for(Category cat : post.getCategories()){
+//                if(cat == category){
+//                    getPosts.add(post);
+//                }
+//            }
+//        }
+//
+//        if(getPosts != null){
+//            map.addAttribute("posts",getPosts);
+//
+//            return "postsByCategory";
+//        }
 
-        if(getPosts != null){
-            map.addAttribute("posts",getPosts);
-
-            return "postsByCategory";
-        }
-
-        return "redirect:/";
+        List<Post> allByCategoryId = postRepository.findAllByCategoriesId(id);
+        map.addAttribute("posts",allByCategoryId);
+        return "postsByCategory";
     }
 
     @GetMapping("/delete")
